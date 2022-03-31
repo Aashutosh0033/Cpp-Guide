@@ -21,7 +21,7 @@
                -Static Data member and Methods<br>
                -Array of Objects and Passing Objects as function Arguments<br>
                -Friend Functions<br>
-               -Friend Classes and Member Friend Functions<br>
+               -Friend Classes and Member Friend Functions
 </details>
 
 <br>
