@@ -17,11 +17,11 @@
 
 <details>
            <summary>Classes and Objects</summary>
-               * Objects memory allocation & using Arrays in Classes
-               * Static Data member and Methods
-               * Array of Objects and Passing Objects as function Arguments
-               * Friend Functions
-               * Friend Classes and Member Friend Functions
+               <br>Objects memory allocation & using Arrays in Classes<br>
+               Static Data member and Methods<br>
+               Array of Objects and Passing Objects as function Arguments<br>
+               Friend Functions<br>
+               Friend Classes and Member Friend Functions<br>
 </details>
     
     
