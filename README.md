@@ -17,24 +17,29 @@
 
 <details>
            <summary>Classes and Objects</summary>
-               <br>Objects memory allocation & using Arrays in Classes<br>
-               Static Data member and Methods<br>
-               Array of Objects and Passing Objects as function Arguments<br>
-               Friend Functions<br>
-               Friend Classes and Member Friend Functions<br>
+               <br>-Objects memory allocation & using Arrays in Classes<br>
+               -Static Data member and Methods<br>
+               -Array of Objects and Passing Objects as function Arguments<br>
+               -Friend Functions<br>
+               -Friend Classes and Member Friend Functions<br>
 </details>
-    
+
+<br>
     
 <details>
            <summary>Constructors and Destructors</summary>
-           <p>Default Constructors</p>
-           <p>Parameterized Constructors</p>
-           <p>Copy Constructors</p>
-           <p>Constructors Overloading</p>
-           <p>Constructors with default arguments</p>
-           <p>Dynamic Initialization of Objects using Constructors</p>
-           <p>Destructors</p>
+           <br>-Default Constructors<br>
+           -Parameterized Constructors<br>
+           =Copy Constructors<br>
+           =Constructors Overloading<br>
+           -Constructors with default arguments<br>
+           -Dynamic Initialization of Objects using Constructors<br>
+           -Destructors<br>
 </details>
+
+<br>
+
+
    
  
  
