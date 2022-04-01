@@ -201,6 +201,55 @@ For Ex. int* my_function(){}<br>
 <br>
 
 
+## References 
+
+**What are References:**
+A referene name is an alias, or another name for an already existing variable. Once a reference is initialised with a variable, either the reference name or the variable name can be used to refer the variable.<br>
+
+Syntax for reference:<br>
+int a = 10;<br>
+int &b = a;<br>
+cout<<a;<br>
+cout<<b;<br>
+//output: <br>
+10<br>
+10<br>
+
+<br>
+
+**References as Parameters:**
+Reference variables can used as function parameters. It is a more safer way to call functions. This is also known as call by reference.<br>
+For Ex.<br>
+int a = 1;<br>
+int b = 2;<br>
+swap(a,b);<br>
+<br>
+int swap(int& c, int& d){}<br>
+
+<br>
+
+**Reference as Return Value:**
+
+You can return reference from functions as any other data type. When a function returns a reference, it infact returns an implicit pointer to its return value.This way a function can be used on the left side of an assignment statement.<br>
+Syntax: return_type& func_name(){};<br>
+
+<br>
+
+**Pointers vs References:**
+
+References are often confused with pointers but three major differences between references and pointers are −<br>
+* You cannot have NULL references. You must always be able to assume that a reference is connected to a legitimate piece of storage.<br>
+* Once a reference is initialized to an object, it cannot be changed to refer to another object. Pointers can be pointed to another object at any time.<br>
+* A reference must be initialized when it is created. Pointers can be initialized at any time.<br>
+
+<br><br>
+
+
+
+
+
+
+
 
   
   
