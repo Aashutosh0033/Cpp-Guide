@@ -130,7 +130,7 @@ Syntax to declare pointers: <br>
  <br> <br>
  
  
- **Null Poiters:**
+ **Null Pointers:**
  
  Poiters can be assigned Null value when declared. It is a good practice to assign null value to pointers in case you do not have exact address to assign. <br> For Ex: int* ptr = NULL ;
  
