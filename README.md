@@ -320,6 +320,296 @@ int Calculator ::sumCompComplex(Complex o1, Complex o2)
 
 ## Constructors and Destructors
 
+Constructors are specials methods of class. They have same name as that of class. They have no return type. They are used to initalize objects. Constructors are automatically invoked when object is created.<br>
+Important characteristics of constructors:<br>
+* A constructor should be declared in the public section of the class.
+* It can have default arguments.
+* We cannot refer to their address.
+
+For Ex. <br>
+```C++
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int a, b;
+
+public:
+    // Creating a Constructor
+    // Constructor is a special member function with the same name as of the class.
+    //It is used to initialize the objects of its class
+    //It is automatically invoked whenever an object is created
+
+    Complex(void); // Constructor declaration
+
+    void printNumber()
+    {
+        cout << "Your number is " << a << " + " << b << "i" << endl;
+    }
+};
+
+Complex ::Complex(void) // ----> This is a default constructor as it takes no parameters
+{
+    a = 10;
+    b = 0;
+    // cout<<"Hello world";
+}
+
+```
+
+**Default Constructor:**
+
+A default constructor is constructor which doesn't take any arguments. It has no parameters.<br>
+
+For Ex.<br>
+```C++
+// Cpp program to illustrate the
+// concept of Constructors
+#include <iostream>
+using namespace std;
+
+class construct
+{
+public:
+	int a, b;
+
+	// Default Constructor
+	construct()
+	{
+		a = 10;
+		b = 20;
+	}
+};
+
+int main()
+{
+	// Default constructor called automatically
+	// when the object is created
+	construct c;
+	cout << "a: " << c.a << endl
+		<< "b: " << c.b;
+	return 1;
+}
+
+```
+
+**Parametrised Constructor:**
+
+Parameterised constructors are those which take one or more parameters.<br>
+For Ex. <br>
+```C++
+#include<iostream>
+using namespace std;
+
+
+class Complex
+{
+    int a, b;
+
+public:
+    Complex(int, int); // Constructor declaration
+
+    void printNumber()
+    {
+        cout << "Your number is " << a << " + " << b << "i" << endl;
+    }
+};
+
+Complex ::Complex(int x, int y) // ----> This is a parameterized constructor as it takes 2 parameters
+{
+    a = x;
+    b = y;
+    // cout<<"Hello world";
+}
+
+```
+
+
+**Copy Constructors:**
+
+A copy constructor is a type of constructor that creates a copy of another object. If we want to an object to resemble another object we can use copy constructor. If no copy constructor is created in a class, compiler will provide its own copy constructor.<br>
+For Ex. <br>
+```C++
+#include<iostream>
+using namespace std;
+
+
+class Number{
+    int a;
+    public:
+        Number(){
+            a = 0;
+        }
+
+        Number(int num){
+            a = num;
+        }
+        // When no copy constructor is found, compiler supplies its own copy constructor
+        Number(Number &obj){
+            cout<<"Copy constructor called!!!"<<endl;
+            a = obj.a;
+        }
+
+        void display(){
+            cout<<"The number for this object is "<< a <<endl;
+        }
+};
+
+
+int main(){
+    Number x, y, z(45), z2;
+    x.display();
+    y.display();
+    z.display();
+
+    Number z1(z); // Copy constructor invoked
+    z1.display();
+
+    z2 = z; // Copy constructor not called
+    z2.display();
+
+    Number z3 = z; // Copy constructor invoked
+    z3.display();
+
+    // z1 should exactly resemble z  or x or y
+
+    return 0;
+}
+
+```
+
+
+**Constructor Overloading:**
+
+If a class contains multiple constructors, it is known as constructor overloading. The compiler makes difference between them by ideantifying the number of parameters and type of parameters it takes.<br>
+
+<br>
+
+**Dynamic Initialization of Objects using Constructors:**
+
+Objects can be dynamically initialized i.e initialized at the runtime. It is useful when the data is of different formats.<br>
+
+<br><br>
+
+
+**Initailisation list in Constructors:**
+
+The initialization list in constructors is another concept of initializing the data members of the class.<br>
+Syntax:<br>
+```C++
+/*
+Syntax for initialization list in constructor:
+constructor (argument-list) : initilization-section
+{
+    assignment + other code;
+}
+```
+
+For Ex.<br>
+```C++
+class Test
+{
+    int a;
+    int b;
+
+public:
+    Test(int i, int j) : a(i), b(j)
+    {
+        cout << "Constructor executed"<<endl;
+        cout << "Value of a is "<<a<<endl;
+        cout << "Value of b is "<<b<<endl;
+    }
+};
+
+int main()
+{
+    Test t(4, 6);
+
+    return 0;
+}
+```
+
+
+**Destructors:**
+
+A destructor is a type of function which is called when the object is destroyed. Destructor never takes an argument nor does it return any value.<br>
+For Ex.<br>
+```C++
+#include<iostream>
+using namespace std;
+
+// Destructor never takes an argument nor does it return any value 
+int count=0;
+
+class num{
+    public:
+        num(){
+            count++;
+            cout<<"This is the time when constructor is called for object number"<<count<<endl;
+        }
+
+        ~num(){
+            cout<<"This is the time when my destructor is called for object number"<<count<<endl;
+            count--;
+        }
+};
+
+
+
+int main(){
+    cout<<"We are inside our main function"<<endl;
+    cout<<"Creating first object n1"<<endl;
+    num n1;
+    {
+        cout<<"Entering this block"<<endl;
+        cout<<"Creating two more objects"<<endl;
+        num n2, n3;
+        cout<<"Exiting this block"<<endl;
+    }
+    cout<<"Back to main"<<endl;
+    return 0;
+}
+```
+
+
+
+
+## Inheritance
+
+Inheritance is a process of inheriting attributes of the base class by a derived class. The syntax of the derived class is shown below<br>
+The syntax of the derived class is : <br>
+```C++
+ // Derived Class syntax
+class {{derived-class-name}} : {{visibility-mode}} {{base-class-name}}
+{
+    class members/methods/etc...
+}
+```
+
+* The concept of reusability in C++ is supported using inheritance
+* We can reuse the properties of an existing class by inheriting it
+* The existing class is called a base class
+* The new class which is inherited from the base class is called a derived class
+* Reusing classes saves time and money
+
+Visibility Modes: <br>
+* Public
+* Private (Default)
+* Protected
+
+Note: 
+* Private members does not get inherited in any derivation
+* In public mode, public members of base class remains public and protected remains protected.
+* In private mode, the public  &  protected members of base class become private
+* In protected mode, the public members of base class become protected and protected remains protected 
+
+
+**Single Inritance:**
+
+
+
+
 
 
 
@@ -327,7 +617,7 @@ int Calculator ::sumCompComplex(Complex o1, Complex o2)
 
 
  
- 
+
  # Pointers & References
   
    <br>
