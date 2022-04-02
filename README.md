@@ -118,76 +118,80 @@ When static methods are created, they become independent of any object and class
 **Array of Objects and Passing Objects as Arguments:**
 An Array of objects is declared in the same way as the other data_type array is declared. An array of objects consists of class objects as its elements. If the array consists of class objects, it is called an Array of Objects. <br>
 For Ex.<br>
-class Employee<br>
-{<br>
-    int id;<br>
-    int salary;<br>
-<br>
-public:<br>
-    void setId(void)<br>
-    {<br>
-        salary = 122;<br>
-        cout << "Enter the id of employee" << endl;<br>
-        cin >> id;<br>
-    }<br>
-<br>
-   void getId(void)<br>
-    {<br>
-        cout << "The id of this employee is " << id << endl;<br>
-    }<br>
-};<br>
-<br>
-<br>
-int main()<br>
-{<br>
-    Employee fb[4];<br>
-    for (int i = 0; i < 4; i++)<br>
-    {<br>
-        fb[i].setId();<br>
-        fb[i].getId();<br>
-    }<br>
-<br>
-   return 0;<br>
-}<br>
+```C++
+class Employee
+{
+    int id;
+    int salary;
+
+public:
+    void setId(void)
+    {
+        salary = 122;
+        cout << "Enter the id of employee" << endl;
+        cin >> id;
+    }
+
+   void getId(void)
+    {
+        cout << "The id of this employee is " << id << endl;
+    }
+};
+
+
+int main()
+{
+    Employee fb[4];
+    for (int i = 0; i < 4; i++)
+    {
+        fb[i].setId();
+        fb[i].getId();
+    }
+
+   return 0;
+}
+```
 
 <br><br>
 
 Objects can be passed as function arguments. This is useful when we want to assign values of passed object to the current object. <br>
 For Ex.<br>
-class complex{<br>
-    int a;<br>
-    int b;<br>
+```C++
+class complex{
+    int a;
+    int b;
 <br>
-   public: <br>
-        void setData(int v1, int v2){<br>
-            a = v1;<br>
-            b = v2;<br>
+   public: 
+        void setData(int v1, int v2){
+            a = v1;
+            b = v2;
         }<br>
 <br>
-   void setDataBySum(complex o1, complex o2){<br>
-            a = o1.a + o2.a;<br>
-            b = o1.b + o2.b;<br>
-        }<br>
-<br>
-   void printNumber(){<br>
-            cout<<"Your complex number is "<<a<<" + "<<b<<"i"<<endl;<br>
-        }<br>
-};<br>
+   void setDataBySum(complex o1, complex o2){
+            a = o1.a + o2.a;
+            b = o1.b + o2.b;
+        }
 
-<br><br>
+   void printNumber(){
+            cout<<"Your complex number is "<<a<<" + "<<b<<"i"<<endl;
+        }
+};
 
-int main(){<br>
-    complex c1, c2, c3;<br>
-    c1.setData(1, 2);<br>
-    c1.printNumber();<br>
-<br>
-    c2.setData(3, 4);<br>
-    c2.printNumber();<br>
-<br>
-    c3.setDataBySum(c1, c2);<br>
-    c3.printNumber();<br>
-    return 0;<br>
-}<br>
+
+
+int main(){
+    complex c1, c2, c3;
+    c1.setData(1, 2);
+    c1.printNumber();
+
+    c2.setData(3, 4);
+    c2.printNumber();
+
+    c3.setDataBySum(c1, c2);
+    c3.printNumber();
+    return 0;
+}
+```
 
 <br><br>
 
@@ -195,45 +199,49 @@ int main(){<br>
 
 Friend fuctions are the functions that have the access to the private data members of the class, even though they are not defined inside the class. It is necessary to write the prototype of the friend function. One necessary thing to note that, if we have written the prototype of the friend function in the class it will not make it the member of the class. <br>
 For Ex.<br>
-class Complex{<br>
-    int a, b;<br>
-    friend Complex sumComplex(Complex o1, Complex o2);<br>
-    public:<br>
-        void setNumber(int n1, int n2){<br>
-            a = n1;<br>
-            b = n2;<br>
-        }<br>
+```C++
+class Complex{
+    int a, b;
+    friend Complex sumComplex(Complex o1, Complex o2);
+    public:
+        void setNumber(int n1, int n2){
+            a = n1;
+            b = n2;
+        }
+
+   // Below line means that non member - sumComplex funtion is allowed to do anything with my private parts (members)
+      void printNumber(){
+          cout<<"Your number is "<<a<<" + "<<b<<"i"<<endl;
+      }
+};
+
+Complex sumComplex(Complex o1, Complex o2){
+    Complex o3;
+    o3.setNumber((o1.a + o2.a), (o1.b + o2.b))
+    ;
+    return o3;
+}
+
+
+
+
+int main(){
+
+   Complex c1, c2, sum;
+   c1.setNumber(1, 4);
+   c1.printNumber();
+
+   c2.setNumber(5, 8);
+   c2.printNumber();
+
+   sum = sumComplex(c1, c2);
+   sum.printNumber();
+
+   return 0;
+}
+```
+
 <br>
-        // Below line means that non member - sumComplex funtion is allowed to do anything with my private parts (members)<br>
-        void printNumber(){<br>
-            cout<<"Your number is "<<a<<" + "<<b<<"i"<<endl;<br>
-        }<br>
-};<br>
-
-Complex sumComplex(Complex o1, Complex o2){<br>
-    Complex o3;<br>
-    o3.setNumber((o1.a + o2.a), (o1.b + o2.b))<br>
-    ;<br>
-    return o3;<br>
-}<br>
-
-
-<br>
-
-int main(){<br>
-
-   Complex c1, c2, sum;<br>
-   c1.setNumber(1, 4);<br>
-   c1.printNumber();<br>
-
-   c2.setNumber(5, 8);<br>
-   c2.printNumber();<br>
-<br>
-   sum = sumComplex(c1, c2);<br>
-   sum.printNumber();<br>
-
-   return 0;<br>
-}<br>
 
 Properties of Friend Friend Function : <br>
 * Not in the scope of class
@@ -250,56 +258,57 @@ Properties of Friend Friend Function : <br>
  
  Friend Classes are those classes that have permission to access the private members of the class in which they are declared. The main thing to note here is that if a class is made friend of another class, it can access all the private members of the class.<br>
  For Ex. <br>
- // Forward declaration<br>
-class Complex;<br>
-<br>
-class Calculator<br>
-{<br>
-public:<br>
-    int add(int a, int b)<br>
-    {<br>
-        return (a + b);<br>
-    }<br>
-<br>
-    int sumRealComplex(Complex, Complex);<br>
-    int sumCompComplex(Complex, Complex);<br>
-};<br>
+ ```C++
+ // Forward declaration
+class Complex;
 
-<br>
+class Calculator
+{
+public:
+    int add(int a, int b)
+    {
+        return (a + b);
+    }
 
-class Complex<br>
-{<br>
-    int a, b;<br>
-    // Individually declaring functions as friends<br>
-    // friend int Calculator ::sumRealComplex(Complex, Complex);<br>
-    // friend int Calculator ::sumCompComplex(Complex, Complex);<br>
-<br>
-    // Aliter: Declaring the entire calculator class as friend<br>
-    friend class Calculator;<br>
-<br>
-public:<br>
-    void setNumber(int n1, int n2)<br>
-    {<br>
-        a = n1;<br>
-        b = n2;<br>
-    }<br>
-<br>
-    void printNumber()<br>
-    {<br>
-        cout << "Your number is " << a << " + " << b << "i" << endl;<br>
-    }<br>
-};<br>
-<br>
-int Calculator ::sumRealComplex(Complex o1, Complex o2)<br>
-{<br>
-    return (o1.a + o2.a);<br>
-}<br>
-<br>
-int Calculator ::sumCompComplex(Complex o1, Complex o2)<br>
-{<br>
-    return (o1.b + o2.b);<br>
-}<br>
+    int sumRealComplex(Complex, Complex);
+    int sumCompComplex(Complex, Complex);
+};
 
+
+
+class Complex
+{
+    int a, b;
+    // Individually declaring functions as friends
+    // friend int Calculator ::sumRealComplex(Complex, Complex);
+    // friend int Calculator ::sumCompComplex(Complex, Complex);
+
+    // Aliter: Declaring the entire calculator class as friend
+    friend class Calculator;
+
+public:
+    void setNumber(int n1, int n2)
+    {
+        a = n1;
+        b = n2;
+    }
+
+    void printNumber()
+    {
+        cout << "Your number is " << a << " + " << b << "i" << endl;
+    }
+};
+
+int Calculator ::sumRealComplex(Complex o1, Complex o2)
+{
+    return (o1.a + o2.a);
+}
+
+int Calculator ::sumCompComplex(Complex o1, Complex o2)
+{
+    return (o1.b + o2.b);
+}
+```
 <br><br>
 
 
