@@ -76,11 +76,6 @@ Cpp is a general purpose programming language which was developed as an enchance
 </details>
 
 <br><br>
-
-
- # Templates
- 
- <br><br>
  
  
  # Pointers & References
@@ -243,6 +238,13 @@ References are often confused with pointers but three major differences between 
 * A reference must be initialized when it is created. Pointers can be initialized at any time.<br>
 
 <br><br>
+
+
+
+
+ # Templates
+ 
+ <br><br>
 
 
 
