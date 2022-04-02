@@ -80,33 +80,36 @@ Cpp is a general purpose programming language which was developed as an enchance
 
 ## Classes and Objects
 
-**Objects memory allocation and using Arrays in classes:**
+**Objects memory allocation and using Arrays in classes:**<br>
 The way memory is allocated to variables and functions is different in classes even thought they both are from same class. The memory is only allocated to the variables of the class when the object is created. The memeory is not allocated to variables when the class is declared. At the same time every variable will have different value for different object, so each object has a an individual copy of variables. But The memory is allocated to functions only when the class is created. So the objects don't have individual copies of the functions, only one copy is shared by all the objects.<br> 
 
 <br>
 
 Arrays are used to store multiple values of the same data type. An Array is useful when multiple variables are required, we can create a single array instead and store multiple values in it.<br>
 For Ex. <br>
-class Shop<br>
-{<br>
-    int itemId[100];<br>
-    int itemPrice[100];<br>
-    int counter;<br>
+```C++
+class Shop
+{
+    int itemId[100];
+    int itemPrice[100];
+    int counter;
 
-public:<br>
-    void initCounter(void) { counter = 0; }<br>
-    void setPrice(void);<br>
-    void displayPrice(void);<br>
-};<br><br>
+public:
+    void initCounter(void) { counter = 0; }
+    void setPrice(void);
+    void displayPrice(void);
+};
+void Shop ::setPrice(void)
+{
+    cout << "Enter Id of your item no " << counter + 1 << endl;
+    cin >> itemId[counter];
+    cout << "Enter Price of your item" << endl;
+    cin >> itemPrice[counter];
+    counter++;
+}
+```
 
-void Shop ::setPrice(void)<br>
-{<br>
-    cout << "Enter Id of your item no " << counter + 1 << endl;<br>
-    cin >> itemId[counter];<br>
-    cout << "Enter Price of your item" << endl;<br>
-    cin >> itemPrice[counter];<br>
-    counter++;<br>
-}<br><br>
+<br><br>
 
 **Static Data members and Methods:**
 When static data memhers is created, there is only one copy of the variable shared different objects of the class. <br>
