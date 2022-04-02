@@ -80,7 +80,8 @@ Cpp is a general purpose programming language which was developed as an enchance
 
 ## Classes and Objects
 
-**Objects memory allocation and using Arrays in classes:**<br>
+**Objects memory allocation and using Arrays in classes:**
+
 The way memory is allocated to variables and functions is different in classes even thought they both are from same class. The memory is only allocated to the variables of the class when the object is created. The memeory is not allocated to variables when the class is declared. At the same time every variable will have different value for different object, so each object has a an individual copy of variables. But The memory is allocated to functions only when the class is created. So the objects don't have individual copies of the functions, only one copy is shared by all the objects.<br> 
 
 <br>
@@ -112,13 +113,15 @@ void Shop ::setPrice(void)
 <br><br>
 
 **Static Data members and Methods:**
+
 When static data memhers is created, there is only one copy of the variable shared different objects of the class. <br>
 <br>
 When static methods are created, they become independent of any object and class. Static methods can only access static members and static methods. <br>
 
 <br>
 
-**Array of Objects and Passing Objects as Arguments:**
+**Array of Objects and Passing Objects as Arguments:**<br>
+
 An Array of objects is declared in the same way as the other data_type array is declared. An array of objects consists of class objects as its elements. If the array consists of class objects, it is called an Array of Objects. <br>
 For Ex.<br>
 ```C++
