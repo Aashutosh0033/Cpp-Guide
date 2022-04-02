@@ -76,6 +76,241 @@ Cpp is a general purpose programming language which was developed as an enchance
 </details>
 
 <br><br>
+
+
+## Classes and Objects
+
+**Objects memory allocation and using Arrays in classes:**
+The way memory is allocated to variables and functions is different in classes even thought they both are from same class. The memory is only allocated to the variables of the class when the object is created. The memeory is not allocated to variables when the class is declared. At the same time every variable will have different value for different object, so each object has a an individual copy of variables. But The memory is allocated to functions only when the class is created. So the objects don't have individual copies of the functions, only one copy is shared by all the objects.<br> 
+
+<br>
+
+Arrays are used to store multiple values of the same data type. An Array is useful when multiple variables are required, we can create a single array instead and store multiple values in it.<br>
+For Ex. <br>
+class Shop<br>
+{<br>
+    int itemId[100];<br>
+    int itemPrice[100];<br>
+    int counter;<br>
+
+public:<br>
+    void initCounter(void) { counter = 0; }<br>
+    void setPrice(void);<br>
+    void displayPrice(void);<br>
+};<br><br>
+
+void Shop ::setPrice(void)<br>
+{<br>
+    cout << "Enter Id of your item no " << counter + 1 << endl;<br>
+    cin >> itemId[counter];<br>
+    cout << "Enter Price of your item" << endl;<br>
+    cin >> itemPrice[counter];<br>
+    counter++;<br>
+}<br><br>
+
+**Static Data members and Methods:**
+When static data memhers is created, there is only one copy of the variable shared different objects of the class. <br>
+<br>
+When static methods are created, they become independent of any object and class. Static methods can only access static members and static methods. <br>
+
+<br>
+
+**Array of Objects and Passing Objects as Arguments:**
+An Array of objects is declared in the same way as the other data_type array is declared. An array of objects consists of class objects as its elements. If the array consists of class objects, it is called an Array of Objects. <br>
+For Ex.<br>
+class Employee<br>
+{<br>
+    int id;<br>
+    int salary;<br>
+<br>
+public:<br>
+    void setId(void)<br>
+    {<br>
+        salary = 122;<br>
+        cout << "Enter the id of employee" << endl;<br>
+        cin >> id;<br>
+    }<br>
+<br>
+   void getId(void)<br>
+    {<br>
+        cout << "The id of this employee is " << id << endl;<br>
+    }<br>
+};<br>
+<br>
+<br>
+int main()<br>
+{<br>
+    Employee fb[4];<br>
+    for (int i = 0; i < 4; i++)<br>
+    {<br>
+        fb[i].setId();<br>
+        fb[i].getId();<br>
+    }<br>
+<br>
+   return 0;<br>
+}<br>
+
+<br><br>
+
+Objects can be passed as function arguments. This is useful when we want to assign values of passed object to the current object. <br>
+For Ex.<br>
+class complex{<br>
+    int a;<br>
+    int b;<br>
+<br>
+   public: <br>
+        void setData(int v1, int v2){<br>
+            a = v1;<br>
+            b = v2;<br>
+        }<br>
+<br>
+   void setDataBySum(complex o1, complex o2){<br>
+            a = o1.a + o2.a;<br>
+            b = o1.b + o2.b;<br>
+        }<br>
+<br>
+   void printNumber(){<br>
+            cout<<"Your complex number is "<<a<<" + "<<b<<"i"<<endl;<br>
+        }<br>
+};<br>
+
+<br><br>
+
+int main(){<br>
+    complex c1, c2, c3;<br>
+    c1.setData(1, 2);<br>
+    c1.printNumber();<br>
+<br>
+    c2.setData(3, 4);<br>
+    c2.printNumber();<br>
+<br>
+    c3.setDataBySum(c1, c2);<br>
+    c3.printNumber();<br>
+    return 0;<br>
+}<br>
+
+<br><br>
+
+**Friend Functions:**
+
+Friend fuctions are the functions that have the access to the private data members of the class, even though they are not defined inside the class. It is necessary to write the prototype of the friend function. One necessary thing to note that, if we have written the prototype of the friend function in the class it will not make it the member of the class. <br>
+For Ex.<br>
+class Complex{<br>
+    int a, b;<br>
+    friend Complex sumComplex(Complex o1, Complex o2);<br>
+    public:<br>
+        void setNumber(int n1, int n2){<br>
+            a = n1;<br>
+            b = n2;<br>
+        }<br>
+<br>
+        // Below line means that non member - sumComplex funtion is allowed to do anything with my private parts (members)<br>
+        void printNumber(){<br>
+            cout<<"Your number is "<<a<<" + "<<b<<"i"<<endl;<br>
+        }<br>
+};<br>
+
+Complex sumComplex(Complex o1, Complex o2){<br>
+    Complex o3;<br>
+    o3.setNumber((o1.a + o2.a), (o1.b + o2.b))<br>
+    ;<br>
+    return o3;<br>
+}<br>
+
+
+<br>
+
+int main(){<br>
+
+   Complex c1, c2, sum;<br>
+   c1.setNumber(1, 4);<br>
+   c1.printNumber();<br>
+
+   c2.setNumber(5, 8);<br>
+   c2.printNumber();<br>
+<br>
+   sum = sumComplex(c1, c2);<br>
+   sum.printNumber();<br>
+
+   return 0;<br>
+}<br>
+
+Properties of Friend Friend Function : <br>
+* Not in the scope of class
+* Since it is not in the scope of class, it cannot be called from the object of the class.
+* A friend function can be invoked without the help of any object.
+* Usually contains objects as arguments.
+* Can be declared under public and private access modifier it will not make any difference.
+* It cannot acess members directly by their names, it has to use (object_name.member_name) .
+
+
+<br><br>
+
+**Friend Classes and Member Friend Functions:**
+ 
+ Friend Classes are those classes that have permission to access the private members of the class in which they are declared. The main thing to note here is that if a class is made friend of another class, it can access all the private members of the class.<br>
+ For Ex. <br>
+ // Forward declaration<br>
+class Complex;<br>
+<br>
+class Calculator<br>
+{<br>
+public:<br>
+    int add(int a, int b)<br>
+    {<br>
+        return (a + b);<br>
+    }<br>
+<br>
+    int sumRealComplex(Complex, Complex);<br>
+    int sumCompComplex(Complex, Complex);<br>
+};<br>
+
+<br>
+
+class Complex<br>
+{<br>
+    int a, b;<br>
+    // Individually declaring functions as friends<br>
+    // friend int Calculator ::sumRealComplex(Complex, Complex);<br>
+    // friend int Calculator ::sumCompComplex(Complex, Complex);<br>
+<br>
+    // Aliter: Declaring the entire calculator class as friend<br>
+    friend class Calculator;<br>
+<br>
+public:<br>
+    void setNumber(int n1, int n2)<br>
+    {<br>
+        a = n1;<br>
+        b = n2;<br>
+    }<br>
+<br>
+    void printNumber()<br>
+    {<br>
+        cout << "Your number is " << a << " + " << b << "i" << endl;<br>
+    }<br>
+};<br>
+<br>
+int Calculator ::sumRealComplex(Complex o1, Complex o2)<br>
+{<br>
+    return (o1.a + o2.a);<br>
+}<br>
+<br>
+int Calculator ::sumCompComplex(Complex o1, Complex o2)<br>
+{<br>
+    return (o1.b + o2.b);<br>
+}<br>
+
+<br><br>
+
+
+## Constructors and Destructors
+
+
+
+
+
+
+
  
  
  # Pointers & References
