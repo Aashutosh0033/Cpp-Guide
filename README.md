@@ -612,10 +612,7 @@ Note:
 
 
 
-
-
-
-
+<br><br>
  
 
  # Pointers & References
@@ -785,6 +782,10 @@ References are often confused with pointers but three major differences between 
  # Templates
  
  <br><br>
+ 
+ # STL (Standard Template Library)
+ 
+  <br><br>
 
 
 
